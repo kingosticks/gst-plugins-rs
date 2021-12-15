@@ -11,10 +11,9 @@ rust-version.workspace = true
 [dependencies]
 gst.workspace = true
 gst-base.workspace = true
-librespot = { git = "https://github.com/librespot-org/librespot.git", rev = "2ea7436e60750d56e747abfca3893be39c0162fd", default-features = false, features = [
+librespot = { git = "https://github.com/librespot-org/librespot.git", rev = "67d31959f5125d3fe5fab5e6e95436a01bb3cef6", default-features = false, features = [
     'passthrough-decoder',
 ] }
-log = "0.4"
 tokio = "1.0"
 futures = "0.3"
 anyhow = "1.0"
