@@ -147,16 +147,10 @@ impl Settings {
                     "reuse cached credentials for user {}",
                     cached_cred.username
                 );
-                if let Ok((session, _credentials)) = Session::connect(
-                    SessionConfig::default(),
-                    cached_cred,
-                    Some(cache.clone()),
-                    true,
-                )
-                .await
-                {
-                    return Ok(session);
-                }
+
+                let session = Session::new(SessionConfig::default(), Some(cache));
+                session.connect(cached_cred, true).await?;
+                return Ok(session);
             }
         }
 
@@ -175,8 +169,8 @@ impl Settings {
 
         let cred = Credentials::with_password(&self.username, &self.password);
 
-        let (session, _credentials) =
-            Session::connect(SessionConfig::default(), cred, Some(cache), true).await?;
+        let session = Session::new(SessionConfig::default(), Some(cache));
+        session.connect(cred, true).await?;
 
         Ok(session)
     }
@@ -185,9 +179,7 @@ impl Settings {
         if self.track.is_empty() {
             bail!("track is not set");
         }
-        let track = SpotifyId::from_uri(&self.track).map_err(|_| {
-            anyhow::anyhow!("failed to create Spotify URI from track {}", self.track)
-        })?;
+        let track = SpotifyId::from_uri(&self.track)?;
 
         Ok(track)
     }
