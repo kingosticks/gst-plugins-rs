@@ -8,8 +8,18 @@
 
 use gst::glib;
 use gst::prelude::*;
+use log;
+use once_cell::sync::Lazy;
 
 mod imp;
+
+static LOGGER: Lazy<gst::DebugCategoryLogger> = Lazy::new(|| {
+    gst::DebugCategoryLogger::new(gst::DebugCategory::new(
+        "librespot",
+        gst::DebugColorFlags::empty(),
+        Some("Spotify audio source librespot"),
+    ))
+});
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy, glib::Enum)]
 #[repr(u32)]
@@ -46,6 +56,10 @@ glib::wrapper! {
 pub fn register(plugin: &gst::Plugin) -> Result<(), glib::BoolError> {
     #[cfg(feature = "doc")]
     Bitrate::static_type().mark_as_plugin_api(gst::PluginAPIFlags::empty());
+
+    log::set_logger(&(*LOGGER))
+        .map(|_| log::set_max_level(log::LevelFilter::Trace))
+        .expect("Failed to set librespot category logger");
 
     gst::Element::register(
         Some(plugin),
