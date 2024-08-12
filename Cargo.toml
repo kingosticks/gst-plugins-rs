@@ -137,7 +137,7 @@ gtk = { package = "gtk4", git = "https://github.com/gtk-rs/gtk4-rs", branch = "0
 gdk-wayland = { package = "gdk4-wayland", git = "https://github.com/gtk-rs/gtk4-rs", branch = "0.9", version = "0.9"}
 gdk-x11 = { package = "gdk4-x11", git = "https://github.com/gtk-rs/gtk4-rs", branch = "0.9", version = "0.9"}
 gdk-win32 = { package = "gdk4-win32", git = "https://github.com/gtk-rs/gtk4-rs", branch = "0.9", version = "0.9"}
-gst = { package = "gstreamer", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", branch = "0.23", version = "0.23" }
+gst = { package = "gstreamer", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", branch = "0.23", version = "0.23", features=["log"] }
 gst-allocators = { package = "gstreamer-allocators", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", branch = "0.23", version = "0.23" }
 gst-app = { package = "gstreamer-app", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", branch = "0.23", version = "0.23" }
 gst-audio = { package = "gstreamer-audio", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", branch = "0.23", version = "0.23" }
