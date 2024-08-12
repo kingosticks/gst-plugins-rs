@@ -3371,6 +3371,7 @@ dependencies = [
  "librespot-core",
  "librespot-metadata",
  "librespot-playback",
+ "log",
  "tokio",
  "url",
 ]
@@ -3680,6 +3681,7 @@ dependencies = [
  "itertools 0.14.0",
  "kstring",
  "libc",
+ "log",
  "muldiv",
  "num-integer",
  "num-rational",
