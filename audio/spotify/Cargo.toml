@@ -13,6 +13,7 @@ gst.workspace = true
 gst-base.workspace = true
 librespot-core = "0.5"
 librespot-playback = { version = "0.5", features = ['passthrough-decoder'] }
+log = "0.4"
 tokio = { version = "1.0", features = ["rt-multi-thread"] }
 futures = "0.3"
 anyhow = "1.0"

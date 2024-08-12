@@ -2994,6 +2994,7 @@ dependencies = [
  "gstreamer-base",
  "librespot-core",
  "librespot-playback",
+ "log",
  "tokio",
  "url",
 ]
@@ -3270,6 +3271,7 @@ dependencies = [
  "gstreamer-sys",
  "itertools 0.13.0",
  "libc",
+ "log",
  "muldiv",
  "num-integer",
  "num-rational",
