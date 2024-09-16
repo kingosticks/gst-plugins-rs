@@ -133,7 +133,7 @@ impl Settings {
 
         if let Some(cached_cred) = cache.credentials() {
             if !self.username.is_empty() && self.username != cached_cred.username {
-                gst::debug!(
+                gst::info!(
                     cat,
                     obj = &src,
                     "ignore cached credentials for user {} which mismatch user {}",
@@ -141,7 +141,7 @@ impl Settings {
                     self.username
                 );
             } else {
-                gst::debug!(
+                gst::info!(
                     cat,
                     obj = &src,
                     "reuse cached credentials for user {}",
