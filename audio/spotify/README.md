@@ -9,10 +9,15 @@ to respect their legal/licensing restrictions.
 ## Spotify Credentials
 
 This plugin requires a [Spotify Premium](https://www.spotify.com/premium/) account.
-If your account is linked with Facebook, you'll need to setup
-a [device username and password](https://www.spotify.com/us/account/set-device-password/).
 
-Those username and password are then set using the `username` and `password` properties.
+Provide a Spotify access token with 'streaming' scope using the `access-token` property. Such a token can be obtained by completing
+[Spotify's OAuth flow](https://developer.spotify.com/documentation/web-api/concepts/authorization) or using the facility on their
+(Web SDK getting started guide](https://developer.spotify.com/documentation/web-playback-sdk/tutorials/getting-started).
+A token can also be obtained using [librespot-oauth](https://github.com/librespot-org/librespot/blob/dev/oauth/examples/oauth.rs):
+
+```console
+cargo install librespot-oauth --git https://github.com/librespot-org/librespot --example oauth && oauth
+```
 
 You may also want to cache credentials and downloaded files, see the `cache-` properties on the element.
 
@@ -21,11 +26,11 @@ You may also want to cache credentials and downloaded files, see the `cache-` pr
 The `spotifyaudiosrc` element can be used to play a song from Spotify using its [Spotify URI](https://community.spotify.com/t5/FAQs/What-s-a-Spotify-URI/ta-p/919201).
 
 ```
-gst-launch-1.0 spotifyaudiosrc username=$USERNAME password=$PASSWORD track=spotify:track:3i3P1mGpV9eRlfKccjDjwi ! oggdemux ! vorbisdec ! audioconvert ! autoaudiosink
+gst-launch-1.0 spotifyaudiosrc access-token=$ACCESS_TOKEN track=spotify:track:3i3P1mGpV9eRlfKccjDjwi ! oggdemux ! vorbisdec ! audioconvert ! autoaudiosink
 ```
 
 The element also implements an URI handler which accepts credentials and cache settings as URI parameters:
 
 ```console
-gst-launch-1.0 playbin3 uri=spotify:track:3i3P1mGpV9eRlfKccjDjwi?username=$USERNAME\&password=$PASSWORD\&cache-credentials=cache\&cache-files=cache
+gst-launch-1.0 playbin3 uri=spotify:track:3i3P1mGpV9eRlfKccjDjwi?access-token=$ACCESS_TOKEN\&cache-credentials=cache\&cache-files=cache
 ```
