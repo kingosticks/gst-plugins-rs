@@ -359,7 +359,7 @@ impl URIHandlerImpl for SpotifyAudioSrc {
         // allow to configure auth and cache settings from the URI
         for (key, value) in url.query_pairs() {
             match key.as_ref() {
-                "username" | "password" | "cache-credentials" | "cache-files" => {
+                "access-token" | "cache-credentials" | "cache-files" => {
                     self.obj().set_property(&key, value.as_ref());
                 }
                 _ => {
