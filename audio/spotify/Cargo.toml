@@ -11,10 +11,8 @@ rust-version.workspace = true
 [dependencies]
 gst.workspace = true
 gst-base.workspace = true
-librespot-core = { git = "https://github.com/librespot-org/librespot.git", rev = "e02e4ae224173fe63612e7542d656b0eadabc719" }
-librespot-playback = { git = "https://github.com/librespot-org/librespot.git", rev = "e02e4ae224173fe63612e7542d656b0eadabc719", default-features = false, features = [
-    'passthrough-decoder',
-] }
+librespot-core = "0.5"
+librespot-playback = { version = "0.5", features = ['passthrough-decoder'] }
 tokio = { version = "1.0", features = ["rt-multi-thread"] }
 futures = "0.3"
 anyhow = "1.0"
