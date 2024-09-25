@@ -267,7 +267,7 @@ impl PushSrcImpl for SpotifyAudioSrc {
 
         match state.receiver.recv().unwrap() {
             Message::Buffer(buffer) => {
-                gst::log!(CAT, imp = self, "got buffer of size {}", buffer.size());
+                gst::trace!(CAT, imp = self, "got buffer of size {}", buffer.size());
                 Ok(CreateSuccess::NewBuffer(buffer))
             }
             Message::Eos => {
