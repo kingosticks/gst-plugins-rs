@@ -133,7 +133,7 @@ impl Settings {
 
         if let Some(cached_cred) = cache.credentials() {
             let cached_username = cached_cred.username.as_ref().unwrap();
-            if !self.username.is_empty() && self.username != cached_username {
+            if !self.username.is_empty() && &self.username != cached_username {
                 gst::info!(
                     cat,
                     obj = &src,
