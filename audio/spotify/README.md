@@ -19,7 +19,15 @@ A token can also be obtained using [librespot-oauth](https://github.com/librespo
 cargo install librespot-oauth --git https://github.com/librespot-org/librespot --example oauth && oauth
 ```
 
-You may also want to cache credentials and downloaded files, see the `cache-` properties on the element.
+Note, Spotify access tokens are only valid for 1 hour and must be [refreshed](https://developer.spotify.com/documentation/web-api/tutorials/refreshing-tokens)
+for usage beyond that.
+
+It is therefore advisable to also use the `cache-credentials` property. On first usage, your access token is exchanged for a reusable credentials blob and
+stored at the location specified by this property. Once obtained, that credentials blob is used for login and any provided `access-token` is ignored.
+Unlike Spotify access tokens, the user's credentials blob does not expire. Avoiding handling token refresh greatly simplifies plugin usage.
+If you do not set `cache-credentials`, you must manage refreshing your Spotify access token so it's valid for login when the element starts.
+
+You may also want to cache downloaded files, see the `cache-files` property.
 
 ## spotifyaudiosrc
 
