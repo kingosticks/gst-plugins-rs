@@ -56,8 +56,13 @@ pub fn register(plugin: &gst::Plugin) -> Result<(), glib::BoolError> {
     #[cfg(feature = "doc")]
     Bitrate::static_type().mark_as_plugin_api(gst::PluginAPIFlags::empty());
 
-    if std::env::var("GST_DEBUG_LIBRESPOT").is_ok() {
-        log::set_boxed_logger(Box::new(&(*LOGGER)))
+    if let Ok(ref mut filters) = std::env::var("GST_DEBUG_LIBRESPOT") {
+        if filters.is_empty() {
+            *filters = "librespot=DEBUG".to_string();
+        }
+        let log_filter = env_filter::Builder::new().parse(filters).build();
+        let filtered_logger = env_filter::FilteredLog::new(&(*LOGGER), log_filter);
+        log::set_boxed_logger(Box::new(filtered_logger))
             .map(|_| log::set_max_level(log::LevelFilter::Trace))
             .expect("Failed to set librespot category logger");
     }
