@@ -3372,6 +3372,7 @@ name = "gst-plugin-spotify"
 version = "0.15.0-alpha.1"
 dependencies = [
  "anyhow",
+ "env_filter",
  "futures",
  "gst-plugin-version-helper",
  "gstreamer",

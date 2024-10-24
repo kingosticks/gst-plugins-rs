@@ -19,6 +19,7 @@ tokio = { version = "1.0", features = ["rt-multi-thread"] }
 futures = "0.3"
 anyhow = "1.0"
 url = "2.3"
+env_filter = "0.1"
 
 [lib]
 name = "gstspotify"
