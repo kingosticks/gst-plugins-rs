@@ -13,7 +13,7 @@ use gst::prelude::*;
 
 use futures::future::{AbortHandle, Aborted};
 use librespot_core::{
-    SpotifyUri, authentication::Credentials, cache::Cache, config::SessionConfig, session::Session,
+    SpotifyUri, authentication::Credentials, cache::Cache, config::SessionConfig, session::Session, version
 };
 
 #[derive(Default, Debug, Clone)]
@@ -120,6 +120,14 @@ impl Settings {
         } else {
             None
         };
+
+        gst::info!(
+            cat,
+            obj = &src,
+            "Using librespot {} ({})",
+            version::SEMVER,
+            version::SHA_SHORT
+        );
 
         let cache = Cache::new(credentials_cache, None, files_cache, max_size)?;
 
