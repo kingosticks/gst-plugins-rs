@@ -11,9 +11,9 @@ rust-version.workspace = true
 [dependencies]
 gst.workspace = true
 gst-base.workspace = true
-librespot-core = { git = "https://github.com/librespot-org/librespot.git", rev = "19f635f90b24a96640ec20a234162ed769a5216b" }
-librespot-metadata = { git = "https://github.com/librespot-org/librespot.git", rev = "19f635f90b24a96640ec20a234162ed769a5216b" }
-librespot-playback = { git = "https://github.com/librespot-org/librespot.git", rev = "19f635f90b24a96640ec20a234162ed769a5216b", features = ['passthrough-decoder'] }
+librespot-core = { git = "https://github.com/librespot-org/librespot.git", rev = "78ce118d32912adfb2705481f69c83df6a88211f" }
+librespot-metadata = { git = "https://github.com/librespot-org/librespot.git", rev = "78ce118d32912adfb2705481f69c83df6a88211f" }
+librespot-playback = { git = "https://github.com/librespot-org/librespot.git", rev = "78ce118d32912adfb2705481f69c83df6a88211f", features = ['passthrough-decoder'] }
 log = "0.4"
 tokio = { version = "1.0", features = ["rt-multi-thread"] }
 futures = "0.3"
